@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,25 +33,27 @@ public class EmpoyeeController {
 
 	@GetMapping("/{id}")
 	public Employee getEmployeeById(@PathVariable int id) {
-		
-		return service.getEmpByid(id);	
+		return service.getEmpByid(id);
+
 	}
 
 	@PostMapping("/add")
-	public void addEmployee(@Valid @RequestBody Employee emp) {
-		
+	public ResponseEntity<?> addEmployee(@Valid @RequestBody Employee emp) {
+
 		service.addemp(emp);
+
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 
 	@PutMapping("/update")
 	public void updateEmployee(@Valid @RequestBody Employee emp) {
-		
+
 		service.addemp(emp);
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public void deleteEmployeeById(@PathVariable int id) {	
-		
+	public void deleteEmployeeById(@PathVariable int id) {
+
 		service.deleteEmp(id);
 	}
 

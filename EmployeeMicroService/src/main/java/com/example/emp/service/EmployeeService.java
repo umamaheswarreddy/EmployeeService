@@ -1,6 +1,7 @@
 package com.example.emp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,15 +20,16 @@ public class EmployeeService {
 
 		return repo.findAll();
 	}
-
+    
+	
 	public void addemp(Employee emp) {
 		repo.save(emp);
 	}
 
 	public void deleteEmp(int id) {
 		
-		Employee emp = repo.findById(id).orElse(null);
-		if (emp == null) 
+		Optional<Employee> emp = repo.findById(id);
+		if (!emp.isPresent()) 
 		{
 			throw new EmployeeNotFoundException("employeeId " + id + " not avilable to delete");
 		}

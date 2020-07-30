@@ -37,9 +37,10 @@ public class EmployeeControllerTest {
 
 		RequestBuilder request = MockMvcRequestBuilders.get("/emp/all").accept(MediaType.APPLICATION_JSON);
 
-		mockMvc.perform(request).andExpect(status().isOk())
-				.andExpect(content()
-						.json("[{id:1, name:mahesh, department:hr, salary:24000.0, email:mahesh@gmail.com, age:25}]"))
+		mockMvc.perform(request)
+		       .andExpect(status().isOk())
+			   .andExpect(content()
+						           .json("[{id:1, name:mahesh, department:hr, salary:24000.0, email:mahesh@gmail.com, age:25}]"))
 				.andReturn();
 	}
 
@@ -67,7 +68,7 @@ public class EmployeeControllerTest {
 				+ "\"age\":\"25\"}")
 				.contentType(MediaType.APPLICATION_JSON);
 
-		mockMvc.perform(request).andExpect(status().is(200)).andReturn();
+		mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 	@Test
 	public void updateEmpTest() throws Exception {

@@ -33,7 +33,7 @@ public class EmployeeServiceTest {
 	private EmployeeService service;
 
 	@Test
-	public void addEmpTest() {
+	public void testAddEmp() {
 		Employee emp = new Employee(1, "mahesh", "cde", 24000, "mahesh@gmail.com", 25);
 		service.addemp(emp);
 		verify(repo, times(1)).save(emp);
@@ -41,10 +41,10 @@ public class EmployeeServiceTest {
 	}
 
 	@Test
-	public void getEmployeeByIdTest() {
+	public void testGetEmployeeById() {
 		Employee emp = new Employee(1, "mahesh", "hr", 1000, "chandhu@gmail.com", 22);
 		Mockito.when(repo.findById(1)).thenReturn(Optional.of(emp));
-		assertSame("chandhu@gmail.com", service.getEmpByid(emp.getId()).getEmail());
+		assertEquals("chandhu@gmail.com", service.getEmpByid(emp.getId()).getEmail());
 	}
 
 	@Test
@@ -57,7 +57,7 @@ public class EmployeeServiceTest {
 	}
 
 	@Test
-	public void getAllEmployeesTest() {
+	public void testGetAllEmployees() {
 		List<Employee> list = new ArrayList<>();
 		Employee emp1 = new Employee(1, "mahesh", "hr", 1000, "chanu@gmail.com", 22);
 		Employee emp2 = new Employee(2, "mathesh", "cde", 2000, "math@gmail.com", 23);

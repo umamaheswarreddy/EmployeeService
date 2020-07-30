@@ -15,7 +15,6 @@ import com.example.emp.entity.Employee;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-
 public class EmployeeRepositoryTest {
 
 	@MockBean
